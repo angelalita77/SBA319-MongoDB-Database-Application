@@ -3,6 +3,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 import globalErr from './middleware/globalErr.mjs';
 import log from "./middleware/loggingMiddleware.mjs"
+import connectionDB from './db/conn.mjs';
+import movieRoutes from './routes/movieRoutes.mjs'
 
 // Env Setups
 dotenv.config();
@@ -11,18 +13,20 @@ const PORT = process.env.PORT || 3001;
 
 
 // DB Connection
-
+connectionDB();
 
 // Middleware
+app.use(express.json());
 app.use(log);
 
 // Routes
+app.use("/api/horror/movies", movieRoutes);
 
 // Testing GlobalERR
-app.get('/test-error', (_req, _res, next) => {
-    const error = new Error('This is a test error!');
-    next(error); 
-});
+// app.get('/test-error', (_req, _res, next) => {
+//     const error = new Error('This is a test error!');
+//     next(error); 
+// });
 
 
 //Err Handling Middleware
