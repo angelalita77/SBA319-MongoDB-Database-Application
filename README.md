@@ -75,7 +75,7 @@ Replace /:id with /(ObjectID)
 
 **Progress:** 85% complete  
 **Checked:** 12 / 14 tasks  
-**Progress Bar:** [██████████░░] (57%)
+**Progress Bar:** [██████████░░] (85%)
 
 ---
 
