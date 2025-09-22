@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const bookSchema = new mongoose.Schema({
+const comicSchema = new mongoose.Schema({
     title: {type: String, required: true},
     author: {type: String, required: true},
     year: {type: Number, required: true},
@@ -21,6 +21,6 @@ const bookSchema = new mongoose.Schema({
 
 });
 
-bookSchema.index({genre: 1});
+comicSchema.index({genre: 1});
 
-export default mongoose.model('books', bookSchema);
+export default mongoose.model('comics', comicSchema);
