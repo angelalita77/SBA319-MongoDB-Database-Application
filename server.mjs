@@ -6,6 +6,7 @@ import log from "./middleware/loggingMiddleware.mjs"
 import connectionDB from './db/conn.mjs';
 import movieRoutes from './routes/movieRoutes.mjs'
 import booksRoutes from './routes/bookRoutes.mjs'
+import comicRoutes from './routes/comicRoutes.mjs'
 
 // Env Setups
 dotenv.config();
@@ -23,6 +24,7 @@ app.use(log);
 // Routes
 app.use("/api/horror/movies", movieRoutes);
 app.use("/api/horror/books", booksRoutes);
+app.use("/api/horror/comics", comicRoutes);
 
 // Testing GlobalERR
 // app.get('/test-error', (_req, _res, next) => {

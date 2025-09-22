@@ -1,7 +1,7 @@
 import express from "express";
-import movies from "../models/movieSchema.mjs"
+import comics from "../models/comicSchema.mjs"
 const router = express.Router();
-import { moviesData } from "../data/movies.mjs";
+import { comicsData } from "../data/comics.mjs";
 
 
 //Seed Route
@@ -10,8 +10,8 @@ router
     .route("/seed")
     .get(async (req, res) => {
         try {
-           // await movies.deleteMany({});  //optional way to delete all documents in collection
-            await movies.create(moviesData);
+           // await comics.deleteMany({});  //optional way to delete all documents in collection
+            await comics.create(comicsData);
             res.send("Data Successfully seeded");
 
         } catch (err) {
@@ -21,15 +21,11 @@ router
     })
 
 // Read
-// // Read 
-// // @route: POST /api/horror/movies
-// // @desc: create NEW quote
- // // @access: Public
 router
     .route("/")
     .get(async (req, res) => {
         try {
-            let result = await movies.find({});
+            let result = await comics.find({});
             console.log(result)
             if (result == '[]')
                 res.json({ msg: 'There are no documents found'})
@@ -42,59 +38,45 @@ router
         }
     })
 
-// // Create 
-// // @route: POST /api/horror/movies
-// // @desc: create NEW quote
- // // @access: Public
+//Create
     .post(async (req, res) => {
         try {
-            let newMovie = await movies.create(req.body);
+            let newcomic = await comics.create(req.body);
             // Return Response
-            res.json(newMovie)
+            res.json(newcomic)
         } catch (err) {
             console.error(err.message);
             res.status(500).json({ msg: `❗️Post Error❗️ - ${err.message}` });
         }
     });
 
-//Update 
-// // @route: PUT /api/horror/movies/:id
-// // @desc: create NEW quote
- // // @access: Public
+//Update
 router
     .route("/:id")
     .put(async (req, res) => {
         try {
-            let updatedMovie = await movies.findByIdAndUpdate(
+            let updatedComics = await comics.findByIdAndUpdate(
                 req.params.id,
                 req.body,
                 { new: true } // Option to allow newly updated object to be sent back
             );
 
-            res.json(updatedMovie);
+            res.json(updatedComics);
         } catch (err) {
             console.error(err.message);
             res.status(500).json({ msg: `❗️Update Error❗️ - ${err.message}` });
         }
     })
-// Deleted 
-// // @route: DELETE /api/horror/movies/:id
-// // @desc: create NEW quote
- // // @access: Public
+    // Deleted
     .delete(async (req, res) => {
         try {
-            let deleteMovie = await movies.findByIdAndDelete(req.params.id);
-            res.json({ msg: 'DELETED:', deleteMovie });
+            let deleteComic = await comics.findByIdAndDelete(req.params.id);
+            res.json({ msg: 'DELETED:', deletecomic });
 
         } catch (err) {
             console.error(err.message);
             res.status(500).json({ msg: `Delete Error❗️ - ${err.message}` });
         }
-    });
-router
-.route()
-
-
-
+    })
 
 export default router;

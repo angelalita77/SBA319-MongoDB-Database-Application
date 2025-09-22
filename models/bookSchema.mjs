@@ -7,13 +7,14 @@ const bookSchema = new mongoose.Schema({
     genre: {
         type: String,
         enum: ['Thriller',
-            'Gore',
+            'Slasher',
             'Kaiju',
             'Supernatural',
             'Possession',
             'Psychological',
             'Found Footage',
-            'Cosmic'
+            'Cosmic Horror',
+            'Paranormal'
         ],
         message:"{VALUE} is not supported"
     },
