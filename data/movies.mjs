@@ -1,4 +1,4 @@
-export const movies =
+export const moviesData =
 [
   {
     "title": "Silence of the Lambs",

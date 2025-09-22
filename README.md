@@ -13,6 +13,45 @@ Use MongoDB indexing to make efficient queries.
 Create MongoDB validation rules.
 Use MongoDB validation to ensure data consistency.
 
+
+## Use to test POST for //api/horror/movies
+{
+    "title": "Gate",
+    "director": "Tibor Takács",
+    "year": 1987,
+    "genre": "Cosmic"
+}
+
+## Use to test PUT //api/horror/movies/:id
+Replace /:id with /(ObjectID)
+{
+    "title": "The Gate",
+    "director": "Tibor Takács",
+    "year": 1987,
+    "genre": "Cosmic"
+}
+
+## Use this to test POST for /api/horror/books
+
+{
+    "title": "The Silence of the Sheep",
+    "author": "Thomas Harris",
+    "year": 1988,
+    "genre": "Thriller",
+    "movieAdaptation": true
+}
+
+  ## Use this to test POST for /api/horror/books
+
+{
+    "title": "The Silence of the Lambs",
+    "author": "Thomas Harris",
+    "year": 1988,
+    "genre": "Thriller",
+    "movieAdaptation": true
+}
+
+
 ## Project Progress Tracker
 
 **Progress:** 0% complete  

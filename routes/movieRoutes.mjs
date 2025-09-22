@@ -1,7 +1,7 @@
 import express from "express";
-import MovieSchema from "../models/movieSchema.mjs"
+import movies from "../models/movieSchema.mjs"
 const router = express.Router();
-import { movies } from "../data/movies.mjs";
+import { moviesData } from "../data/movies.mjs";
 
 
 //Seed Route
@@ -10,8 +10,8 @@ router
     .route("/seed")
     .get(async (req, res) => {
         try {
-           // await MovieSchema.deleteMany({});  //optional
-            await MovieSchema.create(movies);
+           // await movies.deleteMany({});  //optional way to delete all documents in collection
+            await movies.create(moviesData);
             res.send("Data Successfully seeded");
 
         } catch (err) {
@@ -25,7 +25,7 @@ router
     .route("/")
     .get(async (req, res) => {
         try {
-            let result = await MovieSchema.find({});
+            let result = await movies.find({});
             console.log(result)
             if (result == '[]')
                 res.json({ msg: 'There are no documents found'})
@@ -40,7 +40,7 @@ router
 //Create
     .post(async (req, res) => {
         try {
-            let newMovie = await MovieSchema.create(req.body);
+            let newMovie = await movies.create(req.body);
             // Return Response
             res.json(newMovie)
         } catch (err) {
@@ -54,7 +54,7 @@ router
     .route("/:id")
     .put(async (req, res) => {
         try {
-            let updatedMovie = await MovieSchema.findByIdAndUpdate(
+            let updatedMovie = await movies.findByIdAndUpdate(
                 req.params.id,
                 req.body,
                 { new: true } // Option to allow newly updated object to be sent back
@@ -69,13 +69,16 @@ router
     // Deleted
     .delete(async (req, res) => {
         try {
-            let deleteMovie = await MovieSchema.findByIdAndDelete(req.params.id);
+            let deleteMovie = await movies.findByIdAndDelete(req.params.id);
             res.json({ msg: 'DELETED:', deleteMovie });
 
         } catch (err) {
             console.error(err.message);
             res.status(500).json({ msg: `Delete Error❗️ - ${err.message}` });
         }
-    })
+    });
+
+
+
 
 export default router;

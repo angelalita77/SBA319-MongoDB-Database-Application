@@ -22,4 +22,4 @@ const movieSchema = new mongoose.Schema({
 
 movieSchema.index({genre: 1});
 
-export default mongoose.model('MovieSchema', movieSchema);
+export default mongoose.model('movies', movieSchema);

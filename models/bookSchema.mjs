@@ -23,4 +23,4 @@ const bookSchema = new mongoose.Schema({
 
 bookSchema.index({genre: 1});
 
-export default mongoose.model('bookSchema', bookSchema);
+export default mongoose.model('books', bookSchema);
